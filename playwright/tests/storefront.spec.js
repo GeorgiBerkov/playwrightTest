@@ -11,7 +11,7 @@ test('Storefront page has title', async ({ page }) => {
 test('Storefront page has picture', async ({ page }) => {
     const image  = page.locator("[alt='Landing image for Sun Club']")
 
-    
+
     await expect(image).toBeVisible();
 });
 
