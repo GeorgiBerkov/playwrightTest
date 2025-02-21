@@ -22,7 +22,7 @@ jobs:
       # Step 4: Run Playwright tests
       - run:
           name: Run Playwright Tests
-          command: npx playwright test
+          command: npm run test
 
 workflows:
   version: 2
