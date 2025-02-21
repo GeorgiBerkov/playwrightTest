@@ -5,10 +5,15 @@ jobs:
     docker:
       # Use a Node.js Docker image with Playwright dependencies pre-installed
       - image: mcr.microsoft.com/playwright:v1.39.0-focal
-    working_directory: ~/project/playwright  # Align this with your project root directory
+    working_directory: ~/project/playwright  # Navigate to the subdirectory with package.json
     steps:
       # Step 1: Check out the code from the repository
       - checkout
+
+      # Step 2: Debug the working directory to confirm package.json exists
+      - run:
+          name: Debug Working Directory
+          command: ls -la
 
       # Step 2: Install Node.js dependencies
       - run:
