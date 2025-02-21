@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  test:
+  e2e tests:
     docker:
       # Use a Node.js Docker image with Playwright dependencies pre-installed
       - image: mcr.microsoft.com/playwright:v1.39.0-focal
@@ -23,9 +23,14 @@ jobs:
       - run:
           name: Run Playwright Tests
           command: npm run test
+      - store_test_results:
+          path: test-results  # Store JUnit XML reports
+
+      - store_artifacts:
+         path: playwright-report  # Store HTML report for debugging
 
 workflows:
   version: 2
   test:
     jobs:
-      - test
+      - e2e tests
