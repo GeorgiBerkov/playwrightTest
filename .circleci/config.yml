@@ -35,7 +35,7 @@ jobs:
 workflows:
   e2e-tests:
     jobs:
-      - e2e tests
+      - e2e-tests
     triggers:
       - schedule:
           cron: "15 14 * * *"
