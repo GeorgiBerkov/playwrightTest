@@ -36,9 +36,9 @@ workflows:
   e2e-tests:
     jobs:
       - e2e-tests
-    triggers:
-      - schedule:
-          cron: "15 14 * * *"
-          filters:
-            branches:
-              only: main
+#    triggers:
+#      - schedule:
+#          cron: "15 14 * * *"
+#          filters:
+#            branches:
+#              only: main
