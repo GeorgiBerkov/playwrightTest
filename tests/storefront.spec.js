@@ -6,7 +6,7 @@ import { test, expect } from '@playwright/test';
 
 test('Storefront page has title', async ({ page }) => {
     await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
-    await expect(page).toHaveTitle("Sun Club");
+    await expect(page).toHaveTitle("Sun Club"); 
 });
 
 test('Storefront page has picture', async ({ page }) => {
