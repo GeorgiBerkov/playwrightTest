@@ -21,7 +21,8 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 2 : 1,  // on Circle CI now using 2 workers, on local using 1
+  workers: process.env.CI ? 2 : 1,
+  // on Circle CI now using 2 workers, on local using 1
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   //reporter: 'html', ako ne raboti drugiq report tozi e defolten
   reporter: [['junit', { outputFile: 'test-results/results.xml' }], ['html', { open: 'never' }]],
