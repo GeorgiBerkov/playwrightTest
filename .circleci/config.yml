@@ -24,8 +24,8 @@ jobs:
 
       # Step 4: Run Playwright tests
       - run:
-          name: Run Playwright Tests
-          command: npm run test
+          name: Run Playwright Tests in Parallel
+          command: npm run test -- --shard=$(circleci tests split --split-by=timings)
       - store_test_results:
           path: test-results  # Store JUnit XML reports
 
