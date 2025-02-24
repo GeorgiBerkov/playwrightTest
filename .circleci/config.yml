@@ -9,7 +9,6 @@ jobs:
     resource_class: medium
     parallelism: 2
 
-
     steps:
       # Step 1: Check out the code from the repository
       - checkout
@@ -27,7 +26,7 @@ jobs:
       # Step 4: Run Playwright tests
       - run:
           name: Run Playwright Tests in Parallel
-          command: npm run test -- --shard=$(circleci tests split --split-by=timings)
+          command: npm run test -- --shard=${CIRCLE_NODE_INDEX+1}/${CIRCLE_NODE_TOTAL}
       - store_test_results:
           path: test-results  # Store JUnit XML reports
 
