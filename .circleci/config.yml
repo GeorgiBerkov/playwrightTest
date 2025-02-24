@@ -6,7 +6,7 @@ jobs:
       - image: mcr.microsoft.com/playwright:v1.50.1-noble
 
     resource_class: medium
-    parallelism: 4
+    parallelism: 2
 
     steps:
       # Step 1: Check out the code from the repository
