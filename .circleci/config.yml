@@ -33,13 +33,13 @@ jobs:
          path: playwright-report  # Store HTML report for debugging
 
 workflows:
-  version: 2
+  version: 2.1
   e2e tests:
     jobs:
       - e2e tests
     triggers:
       - schedule:
-          cron: "0 14 * * *"
+          cron: "15 14 * * *"
           filters:
             branches:
               only: main
