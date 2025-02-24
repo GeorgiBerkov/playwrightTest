@@ -4,7 +4,7 @@ jobs:
   e2e tests:
     docker:
       # Use a Node.js Docker image with Playwright dependencies pre-installed
-      - image: mcr.microsoft.com/playwright:v1.39.0-focal
+      - image: mcr.microsoft.com/playwright:v1.50.1-noble
 
     resource_class: medium
     parallelism: 2
