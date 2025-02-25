@@ -1,11 +1,18 @@
 version: 2.1
 
-jobs:
-  e2e-tests:
+executors:
+  e2e-tests-executor:
     docker:
       - image: mcr.microsoft.com/playwright:v1.50.1-noble
-
     resource_class: medium
+
+jobs:
+  e2e-tests:
+    executor: e2e-tests-executor
+#    docker:
+#      - image: mcr.microsoft.com/playwright:v1.50.1-noble
+#
+#    resource_class: medium
     parallelism: 2
 
     steps:
@@ -24,7 +31,7 @@ jobs:
 
       # Step 4: Run Playwright tests
       - run:
-          name: Run Playwright Tests in Parallel
+          name: Run Playwright Tests
           command: npm run test -- --shard=${CIRCLE_NODE_INDEX+1}/${CIRCLE_NODE_TOTAL}
       - store_test_results:
           path: test-results  # Store JUnit XML reports
@@ -40,7 +47,7 @@ workflows:
   scheduled-workflow:
     triggers:
       - schedule:
-          cron: "18 09 * * *"
+          cron: "30 10 * * *"
           filters:
             branches:
               only: main
