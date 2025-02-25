@@ -4,38 +4,25 @@ executors:
   e2e-tests-executor:
     docker:
       - image: mcr.microsoft.com/playwright:v1.50.1-noble
-    resource_class: medium
+    resource_class: small
 
 jobs:
   e2e-tests:
     executor: e2e-tests-executor
-#    docker:
-#      - image: mcr.microsoft.com/playwright:v1.50.1-noble
-#
-#    resource_class: medium
     parallelism: 2
-
     steps:
-      # Step 1: Check out the code from the repository
       - checkout
-
-      # Step 2: Install Node.js dependencies
       - run:
           name: Install Dependencies
           command: npm install
-
-      # Step 3: Install Playwright browsers
       - run:
           name: Install Playwright Browsers
           command: npx playwright install --with-deps
-
-      # Step 4: Run Playwright tests
       - run:
           name: Run Playwright Tests
           command: npm run test -- --shard=${CIRCLE_NODE_INDEX+1}/${CIRCLE_NODE_TOTAL}
       - store_test_results:
           path: test-results  # Store JUnit XML reports
-
       - store_artifacts:
          path: playwright-report  # Store HTML report for debugging
 
@@ -52,5 +39,5 @@ workflows:
             branches:
               only: main
     jobs:
-      - e2e-tests  # Add the job to run on schedule
+      - e2e-tests
 
