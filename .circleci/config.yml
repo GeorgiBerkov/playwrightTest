@@ -26,7 +26,8 @@ jobs:
       - store_artifacts:
          path: playwright-report  # Store HTML report for debugging
       - store_artifacts:
-         path: test-results/screenshots  # Store screenshots and diff images for debugging
+          path: snapshots
+          destination: snapshots
 
 workflows:
   version: 2.1

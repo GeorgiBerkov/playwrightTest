@@ -14,7 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
-  outputDir: 'test-results', // Directory to store screenshots and other outputs
+  snapshotDir: './snapshots', // Directory where snapshots are stored
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
