@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 test.beforeEach(async ({ page }) => {
     await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
 
+    // logic for iframe
     // const frameLocator = page.frameLocator("[title='Iframe title']");
     // const acceptBtn = frameLocator.locator('[title="Accept and continue"]')
     //
