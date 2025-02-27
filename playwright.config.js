@@ -14,6 +14,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  outputDir: 'test-results', // Directory to store screenshots and other outputs
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -24,14 +25,16 @@ export default defineConfig({
   workers: process.env.CI ? 2 : 1,
   // on Circle CI now using 2 workers, on local using 1
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  //reporter: 'html', ako ne raboti drugiq report tozi e defolten
-  reporter: [['junit', { outputFile: 'test-results/results.xml' }], ['html', { open: 'never' }]],
+
+  reporter: [['junit', { outputFile: 'test-results/results.xml' }],
+    ['html', { open: 'never' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: true, // Enable headless mode
     browserName: 'chromium', // Specify the browser (can be 'chromium', 'firefox', or 'webkit')
     viewport: { width: 1280, height: 720 }, // Set viewport size
 
+    screenshot: 'only-on-failure', // Configure when screenshots are taken
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 

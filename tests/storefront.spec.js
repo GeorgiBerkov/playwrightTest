@@ -1,16 +1,25 @@
 import { test, expect } from '@playwright/test';
 
-// test.beforeEach(async ({ page }) => {
-//     await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
-// });
+test.beforeEach(async ({ page }) => {
+    await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
+
+    const frameLocator = page.frameLocator("[title='Iframe title']");
+    const acceptBtn = frameLocator.locator('[title="Accept and continue"]')
+
+    if(await acceptBtn.count() > 0) {
+        await acceptBtn.click();
+    }
+});
+
+test('Storefront page Screenshot', async ({ page }) => {
+    await expect(page).toHaveScreenshot('landing.png');
+});
 
 test('Storefront page has title', async ({ page }) => {
-    await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
     await expect(page).toHaveTitle("Sun Club");
 });
 
 test('Storefront page has picture', async ({ page }) => {
-    await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
     const image  = page.locator("[alt='Landing image for Sun Club']")
 
     await expect(image).toBeVisible();
@@ -18,7 +27,6 @@ test('Storefront page has picture', async ({ page }) => {
 
 
 test('Verify "what Your Sun Club membership will include:" text', async ({ page }) => {
-    await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
     const whatMembershipIncludeText  = await  page.locator(".membership-benefits__list-container li").allTextContents();
 
     const expectedText = [
@@ -38,7 +46,6 @@ test('Verify "what Your Sun Club membership will include:" text', async ({ page 
 });
 
 test('Verify "see here" link opens the T&C', async ({ page }) => {
-    await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
     const seeHereLink = await page.locator(".tandcs__link")
     await seeHereLink.scrollIntoViewIfNeeded();
     await seeHereLink.click();
@@ -48,7 +55,6 @@ test('Verify "see here" link opens the T&C', async ({ page }) => {
 });
 
 test('Verify "All your questions answered" content', async ({ page }) => {
-    await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
     const arrowBtns = await page.$$(".faq__list img")
     const expectedText = [
         'Your Sun Club membership will include everything you love from The Sun!\n' +
@@ -79,7 +85,6 @@ test('Verify "All your questions answered" content', async ({ page }) => {
 });
 
 test('Verify "Need help? Click here" leads to Help hub', async ({ page }) => {
-    await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
     const needHelpClickHere = await page.locator(".faq__link")
     await needHelpClickHere.scrollIntoViewIfNeeded();
     await needHelpClickHere.click();
@@ -89,7 +94,6 @@ test('Verify "Need help? Click here" leads to Help hub', async ({ page }) => {
 });
 
 test('Verify monthly membership ', async ({ page }) => {
-    await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
     const monthlyMembershipBtn = await page.getByText("Monthly Membership - £1.99 per month")
     await monthlyMembershipBtn.click();
 
@@ -98,7 +102,6 @@ test('Verify monthly membership ', async ({ page }) => {
 });
 
 test('Verify annual membership ', async ({ page }) => {
-    await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
     const annualMembershipBtn = await page.getByText("Annual Membership - £12 per year")
     await annualMembershipBtn.click();
 

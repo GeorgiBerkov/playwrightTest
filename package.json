@@ -10,7 +10,8 @@
     "test:debug": "npx playwright test --debug",
     "test:chrome": "npx playwright test --browser=chromium",
     "test:webkit": "npx playwright test --browser=webkit",
-    "test:report": "npx playwright show-report"
+    "test:report": "npx playwright show-report",
+    "update:snapshots": "npx playwright test --update-snapshots"
   },
   "keywords": [],
   "author": "",
