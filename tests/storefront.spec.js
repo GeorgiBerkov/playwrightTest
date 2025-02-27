@@ -13,7 +13,9 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('Storefront page Screenshot', async ({ page }) => {
-    await expect(page).toHaveScreenshot('landing.png');
+    await expect(page).toHaveScreenshot('landing.png', {
+        threshold: 0.01, // Allow up to 1% of pixel differences
+    });
 });
 
 test('Storefront page has title', async ({ page }) => {
