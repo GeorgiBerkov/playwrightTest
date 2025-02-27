@@ -26,7 +26,7 @@ jobs:
       - store_artifacts:
          path: playwright-report  # Store HTML report for debugging
       - store_artifacts:
-         path: storefront.spec.js-snapshots  # Store screenshots and diff images for debugging
+         path: tests/storefront.spec.js-snapshots  # Store screenshots and diff images for debugging
 
 workflows:
   version: 2.1
