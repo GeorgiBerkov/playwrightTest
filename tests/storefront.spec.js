@@ -3,12 +3,12 @@ import { test, expect } from '@playwright/test';
 test.beforeEach(async ({ page }) => {
     await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
 
-    const frameLocator = page.frameLocator("[title='Iframe title']");
-    const acceptBtn = frameLocator.locator('[title="Accept and continue"]')
-
-    if(await acceptBtn.count() > 0) {
-        await acceptBtn.click();
-    }
+    // const frameLocator = page.frameLocator("[title='Iframe title']");
+    // const acceptBtn = frameLocator.locator('[title="Accept and continue"]')
+    //
+    // if(await acceptBtn.count() > 0) {
+    //     await acceptBtn.click();
+    // }
 });
 
 test('Storefront page Screenshot', async ({ page }) => {
