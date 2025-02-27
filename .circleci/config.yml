@@ -25,9 +25,7 @@ jobs:
           path: test-results  # Store JUnit XML reports
       - store_artifacts:
          path: playwright-report  # Store HTML report for debugging
-      - store_artifacts:
-          path: snapshots
-          destination: snapshots
+
 
 workflows:
   version: 2.1
