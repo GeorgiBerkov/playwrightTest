@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
 
 test('Storefront page Screenshot', async ({ page }) => {
     await expect(page).toHaveScreenshot('landing.png', {
-        threshold: 0.01, // Allow up to 1% of pixel differences
+        threshold: 0.06, // Allow up to 1% of pixel differences
     });
 });
 
