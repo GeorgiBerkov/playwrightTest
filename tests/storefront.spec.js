@@ -4,14 +4,14 @@ test.beforeEach(async ({ page }) => {
     await page.goto('https://www-dev.uat-thesun.co.uk/joinsunclub/index.html');
 
     // logic for iframe
-    const frameLocator = page.frameLocator("[title='Iframe title']").getByText("Accept all cookies");
+    const frameLocator = page.frameLocator("[title='Iframe title']").locator('button', { hasText: /Accept (all cookies|and continue)/ });
     if(await frameLocator.isVisible()) {
         await frameLocator.click();
     }
 });
 
 test('Storefront page Screenshot', async ({ page }) => {
-    await expect(page).toHaveScreenshot('landing-chromium-linux.png', {
+    await expect(page).toHaveScreenshot('landing.png', {
         threshold: 0.06, // Allow up to 1% of pixel differences
     });
 });
