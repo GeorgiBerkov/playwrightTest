@@ -20,7 +20,7 @@ jobs:
           command: npx playwright install --with-deps
       - run:
           name: Run Playwright Tests
-          command: npm run test -- --shard=${CIRCLE_NODE_INDEX+1}/${CIRCLE_NODE_TOTAL}
+          command: npm run update:snapshots -- --shard=${CIRCLE_NODE_INDEX+1}/${CIRCLE_NODE_TOTAL}
       - store_test_results:
           path: test-results  # Store JUnit XML reports
       - store_artifacts:
